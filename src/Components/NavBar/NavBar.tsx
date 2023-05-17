@@ -1,22 +1,27 @@
 import { NavLink } from 'react-router-dom';
 
 export const NavBar = () => {
-  const NavMap = [
-    { path: '/', name: 'Home' },
-    { path: '/tweets', name: 'Tweets' },
-  ];
-
   return (
-    <nav>
-      <ul>
-        {NavMap.map(({ path, name }) => (
-          <li key={path}>
-            <NavLink to={path} key={path}>
-              {name}
-            </NavLink>
-          </li>
-        ))}
-      </ul>
+    <nav className=" h-24 flex gap-5 ml-4 items-center">
+      <NavLink className="flex text-lg  hover:text-blue-950  " to="/">
+        {({ isActive }) => {
+          return (
+            <span className={` ${isActive ? ' text-purple-1' : ' text-white'}`}>
+              Home
+            </span>
+          );
+        }}
+      </NavLink>
+
+      <NavLink className=" flex  text-lg   hover:text-blue-950 " to="/tweets">
+        {({ isActive }) => {
+          return (
+            <span className={` ${isActive ? 'text-purple-1' : ' text-white'}`}>
+              Tweets
+            </span>
+          );
+        }}
+      </NavLink>
     </nav>
   );
 };
