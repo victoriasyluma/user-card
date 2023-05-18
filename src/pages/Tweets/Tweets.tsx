@@ -11,7 +11,7 @@ export const Tweets = () => {
   const navigate = useNavigate();
 
   return (
-    <>
+    <div className=" animate-fadeIn">
       <button
         className=" bg-purple-4 rounded-10 ml-4 w-40 h-12 hover:bg-pink-1 text-white text-base"
         onClick={() => {
@@ -54,7 +54,7 @@ export const Tweets = () => {
           <Button></Button>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 //pt-5 px-5 pb-8

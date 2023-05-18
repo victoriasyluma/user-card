@@ -43,6 +43,19 @@ export default {
       fontSize: {
         20: '20px',
       },
+      keyframes: {
+        fadeIn: {
+          from: {
+            opacity: 0,
+          },
+          to: {
+            opacity: 1,
+          },
+        },
+      },
+      animation: {
+        fadeIn: 'fadeIn ease-in 0.2s',
+      },
     },
   },
   plugins: [],
