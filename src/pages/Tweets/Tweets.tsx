@@ -3,12 +3,11 @@ import { Tweet } from '../../Components';
 import { useEffect, useState } from 'react';
 import { User, getUsers } from '../../service/Api';
 
-// todo: this should be the tweets list, and there should be another Tweet Component
 export const Tweets = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const [users, setUsers] = useState<User[]>([]); // [User[], setState]
+  const [users, setUsers] = useState<User[]>([]);
 
   useEffect(() => {
     (async () => {

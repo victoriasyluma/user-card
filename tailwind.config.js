@@ -19,9 +19,11 @@ export default {
       },
       width: {
         tweet: '380px',
+        15: '62px',
       },
       height: {
         tweet: '460px',
+        15: '62px',
       },
       borderRadius: {
         20: '20px',

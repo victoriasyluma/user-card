@@ -19,23 +19,23 @@ export const Tweet: React.FC<{ user: User }> = ({ user }) => {
       </div>
 
       <div className="flex justify-center relative -mt-5">
-        <Elipse width={80} height={80} className="z-10" />
+        <Elipse className="z-10  w-20 h-20" />
 
         <div className="absolute w-full h-full flex justify-center items-center">
           <Line />
         </div>
 
         <div className="absolute flex w-full h-full justify-center items-center ">
-          <div className=" bg-fuchsia-200 w-4 h-4 "></div>
+          <img className=" w-15 h-15 rounded-full" alt="" src={user.avatar} />
         </div>
       </div>
 
       <div className=" flex items-center flex-col mt-26 ">
         <h1 className=" text-pink-1  text-20 leading-24 uppercase mb-4">
-          Tweets
+          {user.tweets} Tweets
         </h1>
         <h2 className=" text-pink-1 text-20 leading-24 uppercase mb-26">
-          Followers
+          {user.followers} Followers
         </h2>
 
         <Button></Button>
