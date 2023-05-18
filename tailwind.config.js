@@ -13,19 +13,35 @@ export default {
         'purple-4': '#5736A3',
         'purple-5': '#4B2A99',
         'blue-1': '#D3DEF5',
+        'pink-1': '#EBD8FF',
         'yellow-1': '#F9E4DE',
+        'black-1': '#373737',
       },
       width: {
-        1: '380px',
+        tweet: '380px',
       },
       height: {
-        1: '460px',
+        tweet: '460px',
       },
       borderRadius: {
         20: '20px',
+        10: '10.3108px',
       },
       boxShadow: {
         md: '-2.5776965618133545px 6.873857021331787px 20.621572494506836px 0px #0000003B',
+        button: '0px 3.43693px 3.43693px rgba(0, 0, 0, 0.25)',
+      },
+      margin: {
+        26: '26px',
+      },
+      padding: {
+        14: '14px',
+      },
+      lineHeight: {
+        24: '24px',
+      },
+      fontSize: {
+        20: '20px',
       },
     },
   },
