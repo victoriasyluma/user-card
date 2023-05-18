@@ -10,8 +10,10 @@ export type User = {
   id: number;
 };
 
-export const getUsers = () => {
-  return axios.get(`${BASE_URL}/user`);
+export const getUsers = async () => {
+  const result = await axios.get<User[]>(`${BASE_URL}/user`);
+
+  return result.data;
 };
 
 export const getUser = (userId: number) => {
