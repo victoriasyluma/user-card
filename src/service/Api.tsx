@@ -8,6 +8,7 @@ export type User = {
   followers: number;
   avatar: string;
   id: number;
+  following: boolean;
 };
 
 export const getUsers = async () => {
@@ -20,10 +21,16 @@ export const getUser = (userId: number) => {
   return axios.get(`${BASE_URL}/user/${userId}`);
 };
 
+/**
+ * add user
+ * */
 export const postUser = (user: User) => {
   return axios.post(`${BASE_URL}/user/${user.id}`, user);
 };
 
+/**
+ * update user
+ * */
 export const putUser = (user: Partial<User>) => {
   return axios.put(`${BASE_URL}/user/${user.id}`, user);
 };

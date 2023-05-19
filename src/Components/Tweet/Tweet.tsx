@@ -4,9 +4,31 @@ import { ReactComponent as LogoSvg } from '../../assets/logo_go.svg';
 import { ReactComponent as Elipse } from '../../assets/Ellipse.svg';
 import { ReactComponent as Line } from '../../assets/line_user.svg';
 import { Button } from '../../Components/Button';
-import { User } from '../../service/Api';
+import { User, putUser } from '../../service/Api';
 
 export const Tweet: React.FC<{ user: User }> = ({ user }) => {
+  const handleFollowClick = async () => {
+    /**
+     * case 1 is not following: when you click the button we change in dateBase the boolean value for "following" and increase the quantity
+     *
+     * case 2: when is following you click the button we change the boolean and decrease the quantity followers
+     *  */
+
+    let followers: number;
+
+    if (user.following) {
+      followers = user.followers + 1;
+    } else {
+      followers = user.followers - 1;
+    }
+
+    await putUser({
+      ...user,
+      following: !user.following,
+      followers,
+    });
+  };
+
   return (
     <div
       className="pt-7 pb-9 relative shadow-md rounded-20 
@@ -38,7 +60,10 @@ export const Tweet: React.FC<{ user: User }> = ({ user }) => {
           {user.followers} Followers
         </h2>
 
-        <Button></Button>
+        <Button
+          following={user.following}
+          handleFollowClick={handleFollowClick}
+        ></Button>
       </div>
     </div>
   );
