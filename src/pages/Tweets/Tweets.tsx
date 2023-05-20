@@ -45,7 +45,7 @@ export const Tweets = () => {
 
       {canLoadMore && (
         <button
-          className=" bg-purple-4 rounded-10 ml-4 w-40 h-12 hover:bg-pink-1 text-white text-base"
+          className=" bg-purple-4 rounded-10  w-40 h-12 hover:bg-pink-1 text-white text-base m-auto"
           onClick={loadMore}
         >
           Load more

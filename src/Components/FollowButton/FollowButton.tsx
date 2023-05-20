@@ -10,8 +10,8 @@ export const FollowButton: React.FC<{
 }> = ({ following, onClick, isLoading }) => {
   return (
     <button
-      className={` flex justify-center items-center gap-2 text-black-1 text-lg rounded-10 shadow-button ${
-        following ? 'bg-green-200' : 'bg-pink-1'
+      className={` flex justify-center items-center gap-2 text-black-1 text-lg  font-semibold rounded-10 shadow-button ${
+        following ? 'bg-green-1' : 'bg-pink-1'
       }`}
       style={style}
       onClick={onClick}

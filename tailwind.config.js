@@ -16,6 +16,7 @@ export default {
         'pink-1': '#EBD8FF',
         'yellow-1': '#F9E4DE',
         'black-1': '#373737',
+        'green-1': '#5DD3A8',
       },
       width: {
         tweet: '380px',
