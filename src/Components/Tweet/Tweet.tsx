@@ -6,27 +6,22 @@ import { ReactComponent as Line } from '../../assets/line_user.svg';
 import { Button } from '../../Components/Button';
 import { User, putUser } from '../../service/Api';
 
-export const Tweet: React.FC<{ user: User }> = ({ user }) => {
+export const Tweet: React.FC<{ user: User }> = ({ user: userParam }) => {
+  const [user, setUser] = useState<User>(userParam);
+  const [isUpdating, setIsUodating] = useState(false);
+
   const handleFollowClick = async () => {
-    /**
-     * case 1 is not following: when you click the button we change in dateBase the boolean value for "following" and increase the quantity
-     *
-     * case 2: when is following you click the button we change the boolean and decrease the quantity followers
-     *  */
+    let updatedUser: User = { ...user, following: !user.following };
 
-    let followers: number;
-
-    if (user.following) {
-      followers = user.followers + 1;
+    if (updatedUser.following) {
+      updatedUser.followers = user.followers + 1;
     } else {
-      followers = user.followers - 1;
+      updatedUser.followers = user.followers - 1;
     }
 
-    await putUser({
-      ...user,
-      following: !user.following,
-      followers,
-    });
+    updatedUser = await putUser(updatedUser);
+
+    setUser(updatedUser);
   };
 
   return (

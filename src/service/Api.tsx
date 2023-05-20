@@ -31,8 +31,10 @@ export const postUser = (user: User) => {
 /**
  * update user
  * */
-export const putUser = (user: Partial<User>) => {
-  return axios.put(`${BASE_URL}/user/${user.id}`, user);
+export const putUser = async (user: Partial<User>) => {
+  const response = await axios.put<User>(`${BASE_URL}/user/${user.id}`, user);
+
+  return response.data;
 };
 
 export const deleteUser = (userId: number) => {
