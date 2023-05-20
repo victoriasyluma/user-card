@@ -11,8 +11,12 @@ export type User = {
   following: boolean;
 };
 
-export const getUsers = async () => {
-  const result = await axios.get<User[]>(`${BASE_URL}/user`);
+const PAGE_SIZE = 3;
+
+export const getUsers = async (page: number) => {
+  const result = await axios.get<{ items: User[]; total: number }>(
+    `${BASE_URL}/user?page=${page}&limit=${PAGE_SIZE}`
+  );
 
   return result.data;
 };

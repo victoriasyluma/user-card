@@ -3,7 +3,7 @@ import { Spinner } from '../Spinner';
 
 const style: React.CSSProperties = { height: '50px', width: '196px' };
 
-export const Button: React.FC<{
+export const FollowButton: React.FC<{
   following: boolean;
   onClick: () => void;
   isLoading: boolean;

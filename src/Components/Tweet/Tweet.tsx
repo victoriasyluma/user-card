@@ -3,7 +3,7 @@ import twitIcon from '../../assets/twit_header.png';
 import { ReactComponent as LogoSvg } from '../../assets/logo_go.svg';
 import { ReactComponent as Elipse } from '../../assets/Ellipse.svg';
 import { ReactComponent as Line } from '../../assets/line_user.svg';
-import { Button } from '../../Components/Button';
+import { FollowButton } from '../FollowButton';
 import { User, putUser } from '../../service/Api';
 
 export const Tweet: React.FC<{ user: User }> = ({ user: userParam }) => {
@@ -67,11 +67,11 @@ export const Tweet: React.FC<{ user: User }> = ({ user: userParam }) => {
           {user.followers} Followers
         </h2>
 
-        <Button
+        <FollowButton
           following={user.following}
           onClick={handleFollowClick}
           isLoading={isUpdating}
-        ></Button>
+        ></FollowButton>
       </div>
     </div>
   );
