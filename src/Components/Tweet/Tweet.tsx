@@ -8,20 +8,32 @@ import { User, putUser } from '../../service/Api';
 
 export const Tweet: React.FC<{ user: User }> = ({ user: userParam }) => {
   const [user, setUser] = useState<User>(userParam);
-  const [isUpdating, setIsUodating] = useState(false);
+  const [isUpdating, setIsUpdating] = useState(false);
 
   const handleFollowClick = async () => {
-    let updatedUser: User = { ...user, following: !user.following };
+    try {
+      if (isUpdating) {
+        return;
+      }
 
-    if (updatedUser.following) {
-      updatedUser.followers = user.followers + 1;
-    } else {
-      updatedUser.followers = user.followers - 1;
+      setIsUpdating(true);
+
+      let updatedUser: User = { ...user, following: !user.following };
+
+      if (updatedUser.following) {
+        updatedUser.followers = user.followers + 1;
+      } else {
+        updatedUser.followers = user.followers - 1;
+      }
+
+      updatedUser = await putUser(updatedUser);
+
+      setUser(updatedUser);
+    } catch (error) {
+      throw error;
+    } finally {
+      setIsUpdating(false);
     }
-
-    updatedUser = await putUser(updatedUser);
-
-    setUser(updatedUser);
   };
 
   return (
@@ -57,7 +69,8 @@ export const Tweet: React.FC<{ user: User }> = ({ user: userParam }) => {
 
         <Button
           following={user.following}
-          handleFollowClick={handleFollowClick}
+          onClick={handleFollowClick}
+          isLoading={isUpdating}
         ></Button>
       </div>
     </div>
