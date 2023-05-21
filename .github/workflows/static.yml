@@ -13,12 +13,12 @@ jobs:
 
       - name: Install, lint, build 🔧
         run: |
-          yarn install
+          yarn
 
-          yarn run build
+          yarn build
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.0
         with:
           branch: gh-pages
-          folder: dist
+          folder: ./dist
