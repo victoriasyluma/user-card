@@ -64,7 +64,7 @@ export const Tweet: React.FC<{ user: User }> = ({ user: userParam }) => {
           {user.tweets} Tweets
         </h1>
         <h2 className=" text-pink-1 text-20 leading-24 uppercase mb-26">
-          {user.followers} Followers
+          {user.followers.toLocaleString()} Followers
         </h2>
 
         <FollowButton

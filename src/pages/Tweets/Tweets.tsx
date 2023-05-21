@@ -2,6 +2,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { Tweet } from '../../Components';
 import { useEffect, useState } from 'react';
 import { User, getUsers } from '../../service/Api';
+import { Spinner } from '../../Components';
 
 export const Tweets = () => {
   const location = useLocation();
@@ -10,12 +11,15 @@ export const Tweets = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState<number>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const loadItems = async () => {
+    setIsLoading(true);
     const { items, total } = await getUsers(page);
 
     setUsers([...users, ...items]);
     setTotal(total);
+    setIsLoading(false);
   };
 
   const loadMore = () => {
@@ -45,10 +49,15 @@ export const Tweets = () => {
 
       {canLoadMore && (
         <button
-          className=" bg-purple-4 rounded-10  w-40 h-12 hover:bg-pink-1 text-white text-base m-auto"
+          className=" flex justify-center items-center gap-2 bg-purple-4 rounded-10  w-40 h-12 hover:bg-pink-1 text-white text-base m-auto"
           onClick={loadMore}
         >
           Load more
+          {isLoading && (
+            <div className=" w-5 h-5">
+              <Spinner />
+            </div>
+          )}
         </button>
       )}
     </div>
